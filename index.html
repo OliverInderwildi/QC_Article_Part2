@@ -555,6 +555,18 @@
       margin-bottom: 44px;
       background: var(--paper-warm);
       border: 1px solid var(--rule);
+      overflow: hidden;
+    }
+    /* Flourish embeds need overflow visible so tooltips aren't clipped */
+    .figure.figure-flourish {
+      overflow: visible;
+      border: none;
+      background: transparent;
+    }
+    .figure.figure-flourish .figure-caption {
+      border: 1px solid var(--rule);
+      border-top: none;
+      background: var(--paper-warm);
     }
     /* 16:9 wrapper for all figure media */
     .figure-media {
@@ -584,6 +596,10 @@
     .figure-interactive {
       position: relative;
       overflow: hidden;
+      display: block;
+      text-decoration: none;
+      min-height: 220px;
+      background: var(--paper-deep);
     }
     .figure-interactive img {
       width: 100%;
@@ -599,10 +615,16 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      text-decoration: none;
       transition: background .25s;
     }
-    .figure-interactive-overlay:hover { background: rgba(26,23,20,.6); }
+    /* When no image, overlay fills the whole box without darkening */
+    .figure-interactive.no-preview .figure-interactive-overlay {
+      background: transparent;
+      position: static;
+      padding: 48px 32px;
+    }
+    .figure-interactive:hover .figure-interactive-overlay { background: rgba(26,23,20,.6); }
+    .figure-interactive.no-preview:hover .figure-interactive-overlay { background: var(--rule); }
     .figure-interactive-overlay .overlay-icon {
       width: 56px;
       height: 56px;
@@ -623,6 +645,13 @@
       color: #fff;
       background: rgba(0,0,0,.4);
       padding: 6px 16px;
+    }
+    .figure-interactive.no-preview .overlay-label {
+      color: var(--teal);
+      background: none;
+      font-size: 13px;
+      border-bottom: 1px solid var(--teal-pale);
+      letter-spacing: .08em;
     }
     .figure-caption {
       padding: 14px 20px 16px;
@@ -762,9 +791,16 @@
     <strong>Cascade Risk</strong>
     <p>In combination, one risk can feed into another, creating a vicious cycle of compounding crises. Not only do quantum computers pose serious risks individually — the mechanisms behind those risks are interdependent and could, through cascade effects, create runaway scenarios that we may not be able to control.</p>
   </div>
-   <figure class="figure figure-flourish">
- <div class="flourish-embed flourish-chart" data-src="story/3005122"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/story/3005122/thumbnail" width="100%" alt="visualization" /></noscript></div>
-  
+
+  <figure class="figure">
+    <a class="figure-interactive" href="https://canva.link/hkm3jnxajohwm6y" target="_blank" rel="noopener" id="fig2-link">
+      <img src="preview_risk_matrix.png" alt="Quantum Risk Matrix preview" id="fig2-img"
+        onload="document.getElementById('fig2-link').classList.remove('no-preview')"
+        onerror="document.getElementById('fig2-link').classList.add('no-preview');this.style.display='none'" />
+      <span class="figure-interactive-overlay">
+        <span class="overlay-icon">▶</span>
+        <span class="overlay-label">Open interactive visualisation</span>
+      </span>
     </a>
     <figcaption class="figure-caption">
       <span class="fig-num">Figure 2</span>
@@ -780,8 +816,10 @@
   <p>Due to the high stakes around quantum computers, governments are investing heavily: nations, unions, and federations around the world are stepping up, funnelling billions into the race for quantum supremacy. Some rely mainly on their private sector and public-private partnerships (PPPs), like the United States; some mainly on centralised investments, as in China; others use a multi-faceted approach like European countries that utilise national and EU-wide investment, research programmes, and start-up support alongside PPPs.</p>
   <p>When it comes to the main direct competitors, the US has the advantage of larger private sector investments and a decentralised, highly-collaborative environment of corporates, research institutions, leading universities, and DARPA<sup><a href="#ref10">[10]</a></sup>. This ecosystem is a huge advantage over China's top-down approach.</p>
   <figure class="figure">
-    <a class="figure-interactive" href="https://canva.link/ilrfoiy522alyox" target="_blank" rel="noopener" style="display:block;position:relative;">
-      <img src="preview_heatmap.png" alt="Global Quantum Investments Heatmap preview" style="width:100%;height:auto;display:block;" onerror="this.style.display='none'" />
+    <a class="figure-interactive" href="https://canva.link/ilrfoiy522alyox" target="_blank" rel="noopener" id="fig3-link">
+      <img src="preview_heatmap.png" alt="Global Quantum Investments Heatmap preview" id="fig3-img"
+        onload="document.getElementById('fig3-link').classList.remove('no-preview')"
+        onerror="document.getElementById('fig3-link').classList.add('no-preview');this.style.display='none'" />
       <span class="figure-interactive-overlay">
         <span class="overlay-icon">▶</span>
         <span class="overlay-label">Open interactive visualisation</span>
