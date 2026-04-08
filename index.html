@@ -546,7 +546,13 @@
 
     /* ── Figures ── */
     .figure {
-      margin: 44px -8px;
+      /* Break out of the 680px column and center on the page */
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(960px, calc(100vw - 48px));
+      margin-top: 44px;
+      margin-bottom: 44px;
       background: var(--paper-warm);
       border: 1px solid var(--rule);
     }
@@ -554,7 +560,7 @@
     .figure-media {
       position: relative;
       width: 100%;
-      padding-top: 56.25%; /* 16:9 */
+      padding-top: 56.25%;
       overflow: hidden;
       background: var(--paper-warm);
     }
@@ -573,6 +579,50 @@
       height: 100%;
       border: none;
       display: block;
+    }
+    /* Interactive figure — preview image with overlay link */
+    .figure-interactive {
+      position: relative;
+      overflow: hidden;
+    }
+    .figure-interactive img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .figure-interactive-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(26,23,20,.45);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-decoration: none;
+      transition: background .25s;
+    }
+    .figure-interactive-overlay:hover { background: rgba(26,23,20,.6); }
+    .figure-interactive-overlay .overlay-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .figure-interactive-overlay .overlay-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #fff;
+      background: rgba(0,0,0,.4);
+      padding: 6px 16px;
     }
     .figure-caption {
       padding: 14px 20px 16px;
@@ -714,7 +764,13 @@
   </div>
 
   <figure class="figure">
-    <div class="figure-media"><iframe src="https://canva.link/hkm3jnxajohwm6y" allowfullscreen loading="lazy" title="The Quantum Risk Matrix"></iframe></div>
+    <a class="figure-interactive" href="https://canva.link/hkm3jnxajohwm6y" target="_blank" rel="noopener" style="display:block;position:relative;">
+      <img src="preview_risk_matrix.png" alt="Quantum Risk Matrix preview" style="width:100%;height:auto;display:block;" onerror="this.style.display='none'" />
+      <span class="figure-interactive-overlay">
+        <span class="overlay-icon">▶</span>
+        <span class="overlay-label">Open interactive visualisation</span>
+      </span>
+    </a>
     <figcaption class="figure-caption">
       <span class="fig-num">Figure 2</span>
       <p>The Quantum Risk Matrix: An interactive overview of the systemic and existential risks posed by quantum computing. Explore by capability, affected sector, or potential outcome — hover over the outer layer to see the cascade and its results; the buttons in the top left corner allow you to explore the main risk categories.</p>
@@ -729,7 +785,13 @@
   <p>Due to the high stakes around quantum computers, governments are investing heavily: nations, unions, and federations around the world are stepping up, funnelling billions into the race for quantum supremacy. Some rely mainly on their private sector and public-private partnerships (PPPs), like the United States; some mainly on centralised investments, as in China; others use a multi-faceted approach like European countries that utilise national and EU-wide investment, research programmes, and start-up support alongside PPPs.</p>
   <p>When it comes to the main direct competitors, the US has the advantage of larger private sector investments and a decentralised, highly-collaborative environment of corporates, research institutions, leading universities, and DARPA<sup><a href="#ref10">[10]</a></sup>. This ecosystem is a huge advantage over China's top-down approach.</p>
   <figure class="figure">
-    <div class="figure-media"><iframe src="https://canva.link/ilrfoiy522alyox" allowfullscreen loading="lazy" title="Global Quantum Investments Heatmap"></iframe></div>
+    <a class="figure-interactive" href="https://canva.link/ilrfoiy522alyox" target="_blank" rel="noopener" style="display:block;position:relative;">
+      <img src="preview_heatmap.png" alt="Global Quantum Investments Heatmap preview" style="width:100%;height:auto;display:block;" onerror="this.style.display='none'" />
+      <span class="figure-interactive-overlay">
+        <span class="overlay-icon">▶</span>
+        <span class="overlay-label">Open interactive visualisation</span>
+      </span>
+    </a>
     <figcaption class="figure-caption">
       <span class="fig-num">Figure 3</span>
       <p>Global Quantum Investments Heatmap: This heatmap reveals the global race for quantum supremacy, with strategic public investments varying in scale and structure — from China's centralised mega-funding to the U.S.'s public-private innovation ecosystem.</p>
@@ -771,7 +833,7 @@
   <p>China's export controls on REMs have prompted other nations to seek alternative sources and reduce reliance on Chinese supplies<sup><a href="#ref22">[22]</a></sup>. The European Union has announced strategic projects to increase production of critical materials within member countries as part of ERMA, the European Raw Materials Alliance<sup><a href="#ref23">[23]</a></sup>. Equally, the United States is exploring domestic resources, such as Round Top Mountain in Texas, which hosts significant deposits of heavy rare-earth elements<sup><a href="#ref24">[24]</a></sup>.</p>
   <p>REMs are concentrated in a few countries, and the lion's share are in countries with a <a href="https://www.freiheit.org/will-brics-states-or-donald-trump-reshape-liberal-world-order" target="_blank" rel="noopener">BRICS affiliation</a> — hence the West's access is limited. The global contest for REMs has intensified through the advent of quantum computing, with geopolitical tensions influencing strategic manoeuvres. Two countries that have featured prominently in the media in this context: Ukraine and Greenland.</p>
   <figure class="figure">
-    <div class="figure-media"><iframe src="https://docs.google.com/presentation/d/1APKmUNzuv3jcpW7q42zz-Dz9KsQVHCAzp8j6RYyt3Mc/preview?loop=true&delayms=5000&rm=minimal&slide=id.g33acc7073eb_2_1" allowfullscreen loading="lazy" title="Geopolitics of Rare Earth Metals"></iframe></div>
+    <div class="figure-media"><iframe src="https://docs.google.com/presentation/d/1APKmUNzuv3jcpW7q42zz-Dz9KsQVHCAzp8j6RYyt3Mc/embed?start=true&loop=true&delayms=5000" allowfullscreen loading="lazy" title="Geopolitics of Rare Earth Metals"></iframe></div>
     <figcaption class="figure-caption">
       <span class="fig-num">Figure 6</span>
       <p>Geopolitics of Rare Earth Metals: An interactive infographic showing the distribution of REMs by country and geopolitical allegiance.</p>
