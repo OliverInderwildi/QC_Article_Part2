@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Quantum Computing Revolution: Geopolitics & Economics | Oliver Inderwildi</title>
+  <meta name="description" content="How quantum computing is reshaping global power, triggering tech wars, and redefining geopolitics. By Dr. Oliver Inderwildi." />
+  <meta name="author" content="Oliver Inderwildi" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1a1714;
+      --ink-soft: #3d3830;
+      --ink-muted: #6e6458;
+      --ink-faint: #b0a898;
+      --paper: #f9f6f1;
+      --paper-warm: #f3ede3;
+      --paper-deep: #e8dfd0;
+      --rule: #d4c9b8;
+      --accent: #c0392b;
+      --accent-dark: #962d22;
+      --accent-pale: #f5e8e6;
+      --teal: #1a6b72;
+      --teal-pale: #e3f0f1;
+      --gold: #b8922a;
+      --gold-pale: #f8f1e0;
+      --col-width: 680px;
+      --wide-width: 900px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* ── Header / Hero ── */
+    .hero {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 80px 24px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,.04) 39px, rgba(255,255,255,.04) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,.04) 39px, rgba(255,255,255,.04) 40px);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: var(--wide-width);
+      margin: 0 auto;
+      position: relative;
+    }
+    .publication-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .publication-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,.15);
+    }
+    .series-tag {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -.01em;
+      margin-bottom: 24px;
+      max-width: 820px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--ink-faint);
+    }
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(249,246,241,.7);
+      max-width: 620px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+      font-style: italic;
+    }
+    .byline-strip {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .byline-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--ink-soft);
+      border: 2px solid rgba(255,255,255,.2);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .byline-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .byline-text { flex: 1; }
+    .byline-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--paper);
+    }
+    .byline-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: rgba(249,246,241,.5);
+      letter-spacing: .05em;
+    }
+    .read-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: rgba(249,246,241,.4);
+      letter-spacing: .08em;
+    }
+
+    /* ── Table of Contents ── */
+    .toc-wrapper {
+      max-width: var(--col-width);
+      margin: 56px auto 0;
+      padding: 0 24px;
+    }
+    .toc {
+      background: var(--paper-warm);
+      border-left: 3px solid var(--gold);
+      padding: 28px 32px;
+    }
+    .toc-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .toc ol {
+      padding-left: 20px;
+      color: var(--ink-soft);
+    }
+    .toc li {
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .toc a {
+      color: var(--ink-soft);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color .2s, border-color .2s;
+    }
+    .toc a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ── Article body ── */
+    .article-body {
+      max-width: var(--col-width);
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    .article-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 3.5vw, 30px);
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--ink);
+      margin: 64px 0 20px;
+      padding-top: 48px;
+      border-top: 1px solid var(--rule);
+    }
+    .article-body h2:first-of-type { margin-top: 24px; }
+
+    .article-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 600;
+      font-style: italic;
+      color: var(--ink-soft);
+      margin: 40px 0 16px;
+    }
+
+    .article-body p {
+      margin-bottom: 24px;
+      color: var(--ink-soft);
+    }
+
+    .article-body a {
+      color: var(--teal);
+      text-decoration: none;
+      border-bottom: 1px solid var(--teal-pale);
+      transition: border-color .2s, color .2s;
+    }
+    .article-body a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .article-body ul, .article-body ol {
+      margin: 0 0 24px 24px;
+      color: var(--ink-soft);
+    }
+    .article-body li { margin-bottom: 10px; }
+    .article-body ol { list-style-type: decimal; }
+
+    /* Lead / intro para */
+    .lead {
+      font-size: 19px;
+      font-style: italic;
+      color: var(--ink-muted);
+      border-left: 3px solid var(--accent);
+      padding-left: 24px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    /* Pull quotes */
+    blockquote {
+      margin: 48px -16px;
+      padding: 32px 40px;
+      background: var(--ink);
+      color: var(--paper);
+      position: relative;
+    }
+    blockquote::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 80px;
+      line-height: 1;
+      color: var(--accent);
+      position: absolute;
+      top: 16px;
+      left: 24px;
+    }
+    blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px !important;
+      line-height: 1.5;
+      color: var(--paper) !important;
+      padding-left: 32px;
+      margin-bottom: 0 !important;
+      font-style: italic;
+    }
+
+    /* Section break ornament */
+    .section-break {
+      text-align: center;
+      color: var(--ink-faint);
+      font-size: 20px;
+      margin: 48px 0;
+      letter-spacing: 12px;
+    }
+
+    /* Key concept boxes */
+    .concept-box {
+      background: var(--teal-pale);
+      border-left: 3px solid var(--teal);
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+    .concept-box strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+    .concept-box p {
+      font-size: 16px;
+      margin-bottom: 0 !important;
+    }
+
+    /* Risk callout */
+    .risk-box {
+      background: var(--accent-pale);
+      border-left: 3px solid var(--accent);
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+    .risk-box strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .risk-box p {
+      font-size: 16px;
+      margin-bottom: 0 !important;
+    }
+
+    /* Interactive / visual placeholders */
+    .visual-placeholder {
+      background: var(--paper-deep);
+      border: 1px dashed var(--rule);
+      padding: 40px 32px;
+      text-align: center;
+      margin: 40px 0;
+    }
+    .visual-placeholder .vp-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 10px;
+    }
+    .visual-placeholder .vp-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-style: italic;
+      color: var(--ink-muted);
+    }
+    .visual-placeholder .vp-note {
+      font-size: 13px;
+      color: var(--ink-faint);
+      margin-top: 8px;
+    }
+
+    /* Author section numbers for list items */
+    .article-body ol.safeguards { list-style: none; padding-left: 0; }
+    .article-body ol.safeguards li {
+      padding-left: 28px;
+      position: relative;
+    }
+    .article-body ol.safeguards li::before {
+      content: counter(safeguard-counter);
+      counter-increment: safeguard-counter;
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .article-body ol.safeguards { counter-reset: safeguard-counter; }
+
+    /* Footnote sup */
+    sup a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--gold);
+      border-bottom: none !important;
+      vertical-align: super;
+    }
+
+    /* References section */
+    .references {
+      max-width: var(--col-width);
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+    .references h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .ref-list {
+      list-style: none;
+      padding: 0;
+    }
+    .ref-list li {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--ink-muted);
+      padding: 10px 0 10px 36px;
+      position: relative;
+      border-bottom: 1px solid var(--paper-deep);
+    }
+    .ref-list li::before {
+      content: attr(data-ref);
+      position: absolute;
+      left: 0;
+      top: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--gold);
+      font-weight: 500;
+    }
+    .ref-list a {
+      color: var(--teal);
+      text-decoration: none;
+      border-bottom: 1px solid var(--teal-pale);
+    }
+    .ref-list a:hover { color: var(--accent); }
+
+    /* Author bio */
+    .author-bio {
+      max-width: var(--col-width);
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+    .author-bio-inner {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 36px 40px;
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+    }
+    .author-bio-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--ink-soft);
+      flex-shrink: 0;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,.2);
+    }
+    .author-bio-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .author-bio-content {}
+    .author-bio-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .author-bio-text {
+      font-size: 14px;
+      color: rgba(249,246,241,.7);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--ink);
+      color: rgba(249,246,241,.4);
+      text-align: center;
+      padding: 28px 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .08em;
+    }
+    footer a {
+      color: rgba(249,246,241,.6);
+      text-decoration: none;
+    }
+    footer a:hover { color: var(--accent); }
+
+    /* Tags strip */
+    .tags-strip {
+      max-width: var(--col-width);
+      margin: 0 auto 56px;
+      padding: 0 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border: 1px solid var(--rule);
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: background .2s, color .2s;
+    }
+    .tag:hover {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+
+    /* Separator rule */
+    hr.section-rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 56px 0;
+    }
+
+    /* Part link */
+    .part-nav {
+      background: var(--paper-warm);
+      border: 1px solid var(--rule);
+      padding: 20px 28px;
+      margin: 40px 0;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .part-nav-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      color: var(--ink-faint);
+      white-space: nowrap;
+    }
+    .part-nav a {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-style: italic;
+      color: var(--teal);
+      text-decoration: none;
+      border-bottom: 1px solid var(--teal-pale);
+    }
+    .part-nav a:hover { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      blockquote { margin: 32px 0; padding: 24px 20px 24px 20px; }
+      blockquote::before { font-size: 56px; top: 10px; left: 12px; }
+      blockquote p { padding-left: 20px !important; font-size: 17px !important; }
+      .author-bio-inner { flex-direction: column; gap: 16px; padding: 24px; }
+      .byline-strip { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="publication-label">The Geopolitical Economist</div>
+    <div class="series-tag">Part 2 of 2</div>
+    <h1>The Quantum Computing Revolution:<br><em>From Technological Opportunity<br>to Geopolitical Power Shift</em></h1>
+    <p class="hero-sub">Quantum computing might sound like just another geeky buzzword — but in reality, it could be the most consequential technological breakthrough of all time. Even before becoming fully operational, its mere potential is already reshaping geopolitics, influencing economic strategy, and intensifying global rivalries.</p>
+    <div class="byline-strip">
+      <div class="byline-avatar">
+        <img src="https://miro.medium.com/v2/resize:fill:64:64/1*RifgHDgkaO_QDJmoHN9IbQ.jpeg" alt="Oliver Inderwildi" onerror="this.style.display='none'" />
+      </div>
+      <div class="byline-text">
+        <div class="byline-name">Dr. Oliver Inderwildi</div>
+        <div class="byline-meta">April 14, 2025</div>
+      </div>
+      <div class="read-time">23 min read</div>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════════
+     TABLE OF CONTENTS
+════════════════════════════════════════════════ -->
+<div class="toc-wrapper">
+  <nav class="toc">
+    <div class="toc-title">Contents</div>
+    <ol>
+      <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#power-peril">Quantum Computing: Power, Peril, and the AI Symbiosis</a></li>
+      <li><a href="#risks">Quantum Computing's Severe Risks: Systemic and Interdependent</a></li>
+      <li><a href="#arms-race">Technology &amp; Geopolitics: The Quantum Arms Race</a></li>
+      <li><a href="#minerals">China's Tit-for-Tat: Critical Mineral Resources</a></li>
+      <li><a href="#economics">The Economic Promise of Quantum Computing</a></li>
+      <li><a href="#safeguards">Precautions &amp; Safeguards: Can We Stay Ahead?</a></li>
+      <li><a href="#wake-up-call">A Geopolitical Wake-Up Call</a></li>
+      <li><a href="#conclusions">Conclusions</a></li>
+      <li><a href="#references">References</a></li>
+    </ol>
+  </nav>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     ARTICLE BODY
+════════════════════════════════════════════════ -->
+<article class="article-body">
+
+  <div class="part-nav">
+    <span class="part-nav-label">Read first:</span>
+    <a href="https://medium.com/@oliverinderwildi/the-quantum-computing-revolution-unlocking-solutions-to-humanitys-toughest-problems-part-1-ffe2ebbeb001" target="_blank" rel="noopener">Part 1 — Unlocking Solutions to Humanity's Toughest Problems</a>
+  </div>
+
+  <!-- INTRODUCTION -->
+  <h2 id="introduction">Introduction</h2>
+  <p>We are living in an era of technological advancements hitherto unseen: artificial intelligence (AI) is installed on almost every smartphone, our data floats in a gigantic virtual cloud, financial assets are stored in novel, digital currencies — and the list goes on and on.</p>
+  <p>Recently, significant breakthroughs have been made with a technology that will be an absolute game changer — <em>quantum computing.</em></p>
+  <p>The first running quantum computer will mark an inflection point as we enter the era of <a href="https://www.ibm.com/quantum/blog/on-quantum-supremacy" target="_blank" rel="noopener">quantum supremacy</a><sup><a href="#ref1">[1]</a></sup> — an era in which we can calculate problems that were previously beyond reach<sup><a href="#ref2">[2]</a></sup> — just as the invention of the telescope allowed us to observe galaxies we didn't even know existed, or the microscope revealed entire worlds within a drop of water. Used wisely, this technology will help us solve humanity's most pressing problems — as I argued in <a href="https://medium.com/@oliverinderwildi/the-quantum-computing-revolution-unlocking-solutions-to-humanitys-toughest-problems-part-1-ffe2ebbeb001" target="_blank" rel="noopener">Part 1 of this article</a>. However, there is a potentially dark side to these developments, as the power of the technology will upset global economic, political, military, and social balances. The unfathomable computational strength of quantum computers will shift geopolitical power towards entities — yes, entities, not necessarily nation states — with access to quantum computing<sup><a href="#ref3">[3]</a></sup>. This will create risks that may be impossible to control, as we'll learn later in this think piece.</p>
+
+  <blockquote>
+    <p>We are at an inflection point entering an era of technological supremacy, where entities that lead in innovation and have access to the most advanced technologies will set the rules for the future.</p>
+  </blockquote>
+
+  <p>Almost all new tech can be used beneficially or maliciously — think of nuclear technology and the scientists of the <a href="https://medium.com/@oliverinderwildi/the-price-of-progress-how-ai-developments-echo-the-ethical-dilemmas-of-the-manhattan-project-656b897611d0" target="_blank" rel="noopener">Manhattan Project</a>: they debated the implications of the technology they were building long before it was operational. For quantum computing, the same level of proactive ethical foresight is needed — and it is needed <em>right now.</em></p>
+  <p>This second part of the article examines emerging risks, explores their geopolitical, social, and economic implications, and assesses how this not-yet-operational technology is already affecting international affairs. Last but not least, we explore what safeguards — if any — we can still put in place to mitigate risks.</p>
+
+  <!-- POWER, PERIL -->
+  <h2 id="power-peril">Quantum Computing: Power, Peril, and the Coming Symbiosis with AI</h2>
+  <p>Quantum computing won't just be a technological upgrade — it will mark a decisive point: a new era will begin the moment the first operational quantum computer becomes a reality. It will offer computational power beyond anything we can currently comprehend. What we do with that power could shape the fate of our planet — for better or for worse.</p>
+  <p>Quantum computers could become humanity's ultimate problem-solving engine. They promise breakthroughs in climate modelling, energy system optimisation, and disease prevention — enabling us to unravel some of the most stubborn and complex challenges we face today. <a href="https://medium.com/@oliverinderwildi/the-quantum-computing-revolution-unlocking-solutions-to-humanitys-toughest-problems-part-1-ffe2ebbeb001" target="_blank" rel="noopener">Part 1</a> of this article addressed this in detail.</p>
+  <p>But there's a darker side to that power. It stems largely from two extraordinary capabilities of quantum computers: <strong>quantum decryption</strong> and <strong>quantum simulation</strong>. Each unlocks unprecedented potential — and peril — across multiple domains:</p>
+
+  <div class="concept-box">
+    <strong>Quantum Decryption</strong>
+    <p>A quantum computer can crack today's encryption with ease, rendering current cryptographic safeguards obsolete. This threatens every sector that relies on secure data — banking, healthcare, communications, and national security. A sufficiently advanced quantum computer could decrypt financial networks or manipulate transactions at will. That is not just a technical failure — it is a recipe for financial panic, collapse of trust, and social upheaval. <a href="https://www.rand.org/pubs/commentary/2023/09/when-a-quantum-computer-is-able-to-break-our-encryption.html" target="_blank" rel="noopener">RAND Corporation analysis →</a></p>
+  </div>
+
+  <div class="concept-box">
+    <strong>Quantum Simulation</strong>
+    <p>Quantum computers will be able to model highly complex, multidimensional systems that classical computers simply cannot handle. Quantum simulations could rapidly accelerate discoveries in sensitive fields like biotechnology or nanotech, pushing breakthroughs faster than society can regulate or absorb. Some experts believe these advances could become existential threats — for instance, by enabling the design of autonomous weapons or engineered pathogens before any oversight is possible. <a href="https://thequantuminsider.com/2024/07/25/quantum-simulation-explained-the-next-big-thing-in-advanced-computing/" target="_blank" rel="noopener">The Quantum Insider →</a></p>
+  </div>
+
+  <p>Whoever reaches quantum supremacy first will likely reach quantum dominance soon after. That actor — whether a state or non-state entity — will gain a decisive advantage across science, defence, finance, and global governance. Quantum supremacy might just determine the next global hegemon<sup><a href="#ref4">[4]</a></sup>. An excellent example of such a technological advantage is what happened on the Ukrainian battlefield: Ukrainian forces were able to stop the advance of an attacker who outnumbered them by using intelligence — both open source and foreign — in combination with AI; this combination allowed them to strike the right point at the right time and leave the attackers bewildered<sup><a href="#ref5">[5]</a></sup>. Add the power of a quantum computer to such an approach and the results will be unfathomable; the race for this advantage is on.</p>
+  <p>Google's recent Willow breakthrough — reducing computation times from 10 septillion years to minutes — has supercharged this global race. Microsoft quickly followed with claims of a new quantum state of matter. At the time of writing (March 2025), Quantinuum reported a breakthrough regarding a hitherto unsolvable mathematical problem, and D-Wave even claimed quantum supremacy<sup><a href="#ref6">[6]</a></sup>. One thing is clear: the pace of discovery is accelerating. This is not a coincidence — AI is now playing a major role in supporting quantum development.</p>
+  <p>This emerging symbiosis between quantum computing and artificial intelligence illustrates a potential feedback loop in which each technology accelerates the other, potentially beyond human oversight. AI is already supporting quantum computing by assisting its operation and design. Ultimately, this will not remain a one-way street: once quantum computers are fully operational, they will accelerate AI development in return, while providing it with unprecedented computational power — a symbiosis that will lead to an ever-accelerating innovation cycle, one increasingly difficult for humans to govern.</p>
+  <p>As we approach this threshold, we must be clear-eyed: quantum computing will usher in extraordinary opportunity — but also serious, immediate, and interlinked risks.</p>
+
+  <!-- RISKS -->
+  <h2 id="risks">Quantum Computing's Severe Risks: Systemic and Interdependent</h2>
+  <p>This technology not only comes with severe risks for both our shared socio-economic system and our very existence, but also with systemic impact. The risks, however, are not posed by the computer itself but by the controlling entity — and the cascades of events that could be triggered if the power of quantum computers is not used responsibly.</p>
+  <p>These threats are often synergetic, meaning they can amplify one another. The risk scenarios don't occur in isolation — they interact and cascade. For instance, a quantum-enabled attack that decrypts and collapses the financial system would inevitably trigger broader economic crisis, which potentially leads to social upheaval, which would in turn cause a political crisis. Likewise, rapid quantum-driven advances in AI or biotechnology could emerge just as institutions are weakened by economic chaos, making the overall fallout even harder to contain.</p>
+
+  <div class="risk-box">
+    <strong>Cascade Risk</strong>
+    <p>In combination, one risk can feed into another, creating a vicious cycle of compounding crises. Not only do quantum computers pose serious risks individually — the mechanisms behind those risks are interdependent and could, through cascade effects, create runaway scenarios that we may not be able to control.</p>
+  </div>
+
+  <p>These risks are not theoretical — they are driving geopolitical action in real time. The race to develop the first operable quantum computer is already fuelling a full-blown global technology war, most visibly between the U.S. and China<sup><a href="#ref7">[7]</a></sup>. Quantum supremacy promises dominance not just in computation, but in finance, defence, and data — the pillars of modern power. This has led to geopolitical tensions and an escalating cycle of techno-strategic rivalry. Owing to these high stakes, quantum computing has become the epicentre of a modern Cold War — a full-blown tech race between China and the United States<sup><a href="#ref8">[8]</a></sup>. It is no longer about catching up; it is about who can leap ahead fastest<sup><a href="#ref9">[9]</a></sup>.</p>
+
+  <!-- ARMS RACE -->
+  <h2 id="arms-race">Technology &amp; Geopolitics: The Quantum Arms Race</h2>
+  <p>Quantum computing is clearly a frontier technology. Building a functional quantum computer requires some of the most fine-tuned physical conditions known to science: near absolute-zero temperatures, ultra-high vacuum environments, and near-perfect isolation — and that is just the hardware. Equally critical are advanced semiconductors and control systems, prerequisites for the sophisticated AI that enables the quantum chip to operate and remain in coherence. The quantum chip requires strategic chemical elements and, rather unsurprisingly, serious financial assets.</p>
+  <p>Due to the high stakes around quantum computers, governments are investing heavily: nations, unions, and federations around the world are stepping up, funnelling billions into the race for quantum supremacy. Some rely mainly on their private sector and public-private partnerships (PPPs), like the United States; some mainly on centralised investments, as in China; others use a multi-faceted approach like European countries that utilise national and EU-wide investment, research programmes, and start-up support alongside PPPs.</p>
+  <p>When it comes to the main direct competitors, the US has the advantage of larger private sector investments and a decentralised, highly-collaborative environment of corporates, research institutions, leading universities, and DARPA<sup><a href="#ref10">[10]</a></sup>. This ecosystem is a huge advantage over China's top-down approach.</p>
+  <p>The race for quantum computing is the modern-day analogue to the nuclear arms race of the 20th century — only this time, the battleground is shifting from raw military power and control over land and resources to technological supremacy<sup><a href="#ref11">[11]</a></sup>. <a href="https://www.linkedin.com/in/markus-pflitsch-22327bb1/" target="_blank" rel="noopener">Markus Pflitsch</a>, CEO of Terra Quantum and advisor to President Trump, has aptly dubbed this new arena "<em>techno-politics</em>". Yet as we'll see next, control over critical resources remains a decisive factor in this escalating contest.</p>
+  <p>The battle is not exclusively fought with proactive measures to support quantum computing progress. Next to supporting the development of the technology, players are looking for means to prohibit others from achieving quantum supremacy first — efforts that are key factors in ongoing conflicts and geopolitical tensions we follow through the media without realising their technological dimension.</p>
+
+  <h3>Breaking the Cycle: Chips on the Global Table</h3>
+  <p>While a plethora of high-tech equipment is necessary to run a quantum computer, the real strategic Achilles heel in this race is the supply of advanced semiconductors. Quantum computers depend on sophisticated control systems, which in turn require the most advanced semiconductors. These semiconductors are produced mainly in countries affiliated with the West, and the West's plan is to achieve quantum supremacy first not only by pushing the technology, but also by prohibiting China access to these chips. Ultimately, it is precisely the symbiosis between AI and quantum computing that rival nations are trying to disrupt.</p>
+  <p>To prevent China from gaining the upper hand, the US has imposed <a href="https://sanctionsnews.bakermckenzie.com/us-department-of-commerce-significantly-expands-controls-targeting-indigenous-production-of-advanced-semiconductors-in-china/" target="_blank" rel="noopener">sweeping trade restrictions</a>, targeting not just Chinese companies but the global semiconductor supply chain. These sanctions aim to slow China's access to high-end chips — and by extension, to the advanced quantum and AI systems that depend on them. Initial sanctions were implemented during the first Trump presidency and tightened several times since. Meanwhile, Japan, Taiwan, the Netherlands, and many other countries have joined this alliance<sup><a href="#ref12">[12]</a></sup>.</p>
+  <p>The sanctions, however, had a fair few unintended consequences — spurring China's domestic endeavours for advanced chip manufacturing, the hoarding of chips and equipment, and the establishment of back-channel supply chains. In addition, the restrictions are hampering innovation by disrupting the global innovation ecosystem; since countries not clearly affiliated with the West are included in export restrictions, innovations from their end are hampered, leading to a slowdown of development<sup><a href="#ref13">[13]</a></sup>.</p>
+  <p>The most important and detrimental knock-on effect, however, is the resurgence of an old conflict in East Asia: <em>China's territorial ambitions regarding Taiwan.</em></p>
+  <p>The Strait of Taiwan has become a geopolitical flashpoint again: Taiwan's semiconductor foundries — especially TSMC — are among the few capable of producing the chips needed to control next-generation quantum computers. In strategic terms, this makes Taiwan not just a territorial prize, but a technological one — protected, for now, by what is often referred to as the <a href="https://thediplomat.com/2024/09/silicon-shield-2-0-a-taiwan-perspective/" target="_blank" rel="noopener">Silicon Shield</a><sup><a href="#ref14">[14]</a></sup>. Should China lay its hands on Taiwan, the West — led by the United States — would clearly intervene. Taiwan's capabilities in silicon chip manufacturing are thus both attraction and deterrent simultaneously.</p>
+  <p>The recent developments in the Strait of Taiwan clearly show that both sides are flexing muscles<sup><a href="#ref15">[15]</a></sup>. China is continuing military drills, most recently resembling a blockade of the island, while Western countries are sending naval forces to indicate their likely response<sup><a href="#ref16">[16]</a></sup>. Intelligence services are also on the case: Taiwan's counterintelligence was able to catch four soldiers who were spying for China, and is tracking a large-scale attempt to recruit Taiwanese tech personnel for Chinese endeavours<sup><a href="#ref17">[17]</a></sup>.</p>
+
+  <!-- MINERALS -->
+  <h2 id="minerals">China's Tit-for-Tat: Critical Mineral Resources</h2>
+  <p>High-tech is a lot about know-how, but not exclusively. Some chemical elements are irreplaceable in the manufacturing of advanced systems — platinum for catalysis, neodymium for state-of-the-art magnets. A group of chemical elements referred to as <a href="https://profession.americangeosciences.org/society/intersections/faq/what-are-rare-earth-elements-and-why-are-they-important" target="_blank" rel="noopener">rare earth metals (REMs)</a> are critical for a range of important tech developments, including electric engines, LED lights, fibre-optic cables, and state-of-the-art magnets.</p>
+  <p>In defence, REMs are used in satellite communications, guidance systems, and aircraft structures. The U.S. Department of Defense has highlighted the importance of securing a stable supply of these materials, noting their use in critical defence capabilities such as the F-35 Lightning II aircraft and advanced radar systems<sup><a href="#ref18">[18]</a></sup>. REMs are also critical for — quantum chips.</p>
+  <p>Currently, the main producer of these elements is China, and it did not wait long to use its control over this resource to retaliate against the US export bans<sup><a href="#ref19">[19]</a></sup>. In December 2023, China banned the export of technology related to rare earth magnet production, adding to existing restrictions on extraction and separation technologies. China accounts for nearly 90% of global refined rare earth output<sup><a href="#ref20">[20]</a></sup>. This strategic move underscores the pivotal role REMs play not only in quantum computing but also across a spectrum of high-tech applications, including defence systems<sup><a href="#ref21">[21]</a></sup>.</p>
+  <p>China's export controls on REMs have prompted other nations to seek alternative sources and reduce reliance on Chinese supplies<sup><a href="#ref22">[22]</a></sup>. The European Union has announced strategic projects to increase production of critical materials within member countries as part of ERMA, the European Raw Materials Alliance<sup><a href="#ref23">[23]</a></sup>. Equally, the United States is exploring domestic resources, such as Round Top Mountain in Texas, which hosts significant deposits of heavy rare-earth elements<sup><a href="#ref24">[24]</a></sup>.</p>
+  <p>REMs are concentrated in a few countries, and the lion's share are in countries with a <a href="https://www.freiheit.org/will-brics-states-or-donald-trump-reshape-liberal-world-order" target="_blank" rel="noopener">BRICS affiliation</a> — hence the West's access is limited. The global contest for REMs has intensified through the advent of quantum computing, with geopolitical tensions influencing strategic manoeuvres. Two countries that have featured prominently in the media in this context: Ukraine and Greenland.</p>
+  <p>In the midst of the Ukraine conflict, President Trump demanded compensation from Ukraine for the extensive military aid the US had provided to the attacked country. "Surprisingly", this compensation was to be paid in the form of an agreement on critical minerals, including rare earth metals. Ukrainian President Zelensky was willing to agree on such an arrangement but insisted on tying it to security guarantees for his country, while his US counterpart was reluctant and applying pressure.</p>
+  <p>President Zelensky has — in my opinion quite rightly — turned Trump's deal down as it did not come with security guarantees; he owes it to the Ukrainian people to make the most of the country's resources and use them as a shield analogous to Taiwan's silicon shield. An indirect safeguard for Ukraine, however, would be American "boots on the ground" in the form of US mining giants exploring resources in Ukraine — I would bet Russia would think twice or thrice about bombing Ukraine if this interfered with US business operations regarding strategic resources.</p>
+  <p>The tricky part: Ukraine's REM deposits are mainly located in areas currently held by Russia<sup><a href="#ref25">[25]</a></sup>, and the American president has initiated parallel talks with the Kremlin regarding resource production<sup><a href="#ref26">[26]</a></sup>. Mr Trump is driving a hard bargain, well realising that he is playing with European security.</p>
+  <p>Concurrently, Trump has renewed his interest in acquiring Greenland, citing its vast reserves of rare earth elements and its strategic location as vital for U.S. national security. These developments underscore the escalating global scramble for REMs, driven by their indispensable role in high-tech industries and defence applications.</p>
+
+  <div class="risk-box">
+    <strong>Nota Bene</strong>
+    <p>These conflicts and tensions are not predominantly about REMs, but the scramble for these critical resources and technological supremacy is a key factor fuelling them. Moreover, Ukraine's REM reserves are disputed by many, citing that estimates date back to Soviet assessments that are hardly reliable<sup><a href="#ref27">[27]</a></sup>; meanwhile, intelligence services use satellite-based remote sensing and aerial magnetic surveys that seem to tell a different story<sup><a href="#ref28">[28]</a></sup>. We live in a time in which publicly disclosed data is meant to steer rather than to inform.</p>
+  </div>
+
+  <p>The above examples show that — behind Trump's bold and populist rhetoric — there are strategic goals aimed at cementing the US's position as a technological and military leader, as well as re-establishing the US as a global economic powerhouse.</p>
+
+  <!-- ECONOMICS -->
+  <h2 id="economics">The Economic Promise of Quantum Computing</h2>
+  <p>Still, the hype around quantum computing is not just geopolitical — the economics of the technology look compelling too. According to leading consultancies and market analysts, quantum computing could generate between $450 billion and $2 trillion in economic value by 2035. That is not just a futuristic vision — it is a near-term transformation.</p>
+  <p>Estimates vary widely depending on how quickly the technology matures and how broadly it is adopted. The <a href="https://www.bcg.com/publications/2024/long-term-forecast-for-quantum-computing-still-looks-bright" target="_blank" rel="noopener">Boston Consulting Group</a> provides a conservative range of $450–850 billion, while <a href="https://thequantuminsider.com/2024/09/13/the-quantum-insider-projects-1-trillion-in-economic-impact-from-quantum-computing-by-2035/" target="_blank" rel="noopener">Quantum Insider</a> and <a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/steady-progress-in-approaching-the-quantum-advantage" target="_blank" rel="noopener">McKinsey &amp; Company</a> both project potential impacts approaching or exceeding $1 trillion — larger than the entire global smartphone ecosystem today.</p>
+  <p>But these forecasts don't only reflect the growth of hardware and software sales — they account for value creation across sectors: pharma, logistics, finance, energy, materials science, and beyond. Quantum computing won't just launch a new tech vertical — it will upgrade existing ones. In the short term, the market for quantum hardware and software alone is expected to hit $8–15 billion by 2025, underscoring the urgency with which industry leaders are building quantum capacity.</p>
+  <p>The economic impact will also depend on how the technology — and its symbiosis with AI — is managed by governments. From the risk assessment, it can be clearly seen that we cannot let these technologies "go loose" as there are too many risks involved. Legislators will have to face the difficult balancing act of supporting this innovation while safeguarding the public interest.</p>
+
+  <!-- SAFEGUARDS -->
+  <h2 id="safeguards">Precautions &amp; Safeguards: Can We Stay Ahead of the Curve?</h2>
+  <p>While the quantum arms race accelerates, so too do efforts to mitigate its most dangerous consequences. Governments, research institutions, and industry coalitions are scrambling to future-proof digital systems and strategic infrastructure before quantum capabilities render them obsolete — or dangerously vulnerable<sup><a href="#ref29">[29]</a></sup>. Below are key pillars of this evolving security architecture.</p>
+
+  <h3>Post-Quantum Cryptography (PQC)</h3>
+  <p>The most urgent safeguard is building encryption that quantum computers cannot break. Known as post-quantum cryptography (PQC), this new class of encryption algorithms is designed to withstand attacks from quantum decryption. The U.S. National Institute of Standards and Technology (NIST) has finalised its first set of PQC standards and published a roadmap for retiring RSA and ECC encryption by 2035 — a shift already echoed by France's phased transition strategy targeting full PQC compliance by 2030. Germany, Canada, and Japan are running parallel efforts to ensure their critical infrastructure and digital assets can survive in a post-quantum world<sup><a href="#ref30">[30]</a></sup>.</p>
+
+  <h3>Quantum Security Guidelines &amp; Crypto-Agility</h3>
+  <p>The ability to adapt encryption systems swiftly — known as crypto-agility — is becoming a regulatory priority<sup><a href="#ref31">[31]</a></sup>. Singapore's Cyber Security Agency (CSA) will roll out national guidelines in 2025 to guide institutions through risk-based assessments, focusing on data value and migration timelines. Meanwhile, frameworks like the EU's Digital Operational Resilience Act (DORA) already require state-of-the-art encryption, nudging institutions toward hybrid cryptographic models that blend classical and quantum-safe algorithms.</p>
+
+  <h3>National Security Initiatives</h3>
+  <p>Quantum technology is now a tier-one national security issue. Intelligence agencies and military planners are actively assessing how future quantum computers could compromise classified communications, weapons systems, and power grids<sup><a href="#ref32">[32]</a></sup>. National initiatives are being funded at scale to:</p>
+  <ol class="safeguards">
+    <li>Harden communications infrastructure with quantum-resistant protocols.</li>
+    <li>Map vulnerabilities in critical infrastructure under quantum threat models.</li>
+    <li>Develop counterintelligence strategies to deter hostile use of quantum capabilities.</li>
+  </ol>
+
+  <h3>Quantum Key Distribution (QKD)</h3>
+  <p>Alongside PQC, Quantum Key Distribution (QKD) is gaining traction as a complementary technology. By using principles of quantum mechanics, QKD allows two parties to establish encryption keys that are theoretically tamper-proof. Organisations are beginning phased QKD deployment — starting with highly sensitive communication networks before expanding to wider IT ecosystems.</p>
+
+  <h3>Strategic Workforce Development &amp; Supply Chain Resilience</h3>
+  <p>The OECD has flagged two immediate bottlenecks to secure quantum adoption: people and materials. Nations are boosting investment in STEM education, research fellowships, and vocational training to fill the global shortage of quantum-literate engineers and scientists. Meanwhile, policymakers are monitoring dependencies on critical resources like rare earth elements and cryogenic materials to safeguard the quantum hardware supply chain.</p>
+
+  <h3>Financial Sector Safeguards</h3>
+  <p>Quantum decryption would hit finance first — and hardest. Recognising this, the G7 Cyber Expert Group has issued quantum-readiness guidelines to financial institutions, recommending tailored risk assessments and resilience strategies built around quantum-safe standards. Central banks are now including quantum threats in scenario analyses for systemic risk planning.</p>
+
+  <h3>Digital Diplomacy &amp; Strategic Alliances</h3>
+  <p>Quantum security is not just a technical challenge — it is a diplomatic one. Nations are beginning to formalise "digital diplomacy" frameworks: cross-border agreements on tech standards, export controls, and joint research initiatives. The EU, U.S., and Japan are leading the charge in forming such alliances, often tied to existing cybersecurity pacts or 6G research partnerships. The Quad Alliance (U.S., India, Australia, Japan) has also discussed quantum as a critical area of cooperation. These initiatives aim not only to set shared guardrails, but also to prevent misuse of dual-use technologies and ensure equitable access.</p>
+
+  <h3>Transition Timelines &amp; Compliance Frameworks</h3>
+  <p>Migration to quantum-safe systems will not happen overnight. Most roadmaps, such as those from NIST and ANSSI (France's cybersecurity agency), stretch into the 2030s. As critical sectors — finance, telecom, healthcare, automotive — prepare to overhaul their security stacks, governments are establishing transition frameworks to support coordinated compliance and avoid market fragmentation.</p>
+
+  <div class="risk-box">
+    <strong>Remaining Hurdles</strong>
+    <p>Despite encouraging momentum: the cost of implementing quantum-safe infrastructure could be prohibitive for SMEs; the current concentration of quantum talent and infrastructure in a few wealthy nations risks exacerbating global inequalities; and vulnerabilities in rare-earth supply chains could delay hardware deployment in lower-income or geopolitically isolated regions.</p>
+  </div>
+
+  <p>As the technology curve steepens, regulators will have to walk a tightrope — balancing innovation and competitiveness on the one hand with national security, individual rights, and global equity on the other. The stakes couldn't be higher: securing the digital world before quantum computers arrive will be one of the most consequential policy challenges of our time.</p>
+
+  <!-- WAKE-UP CALL -->
+  <h2 id="wake-up-call">A Geopolitical Wake-Up Call</h2>
+  <p>Beyond the scramble for tech supremacy, recent developments should serve as a broader wake-up call. The days of near-automatic security guarantees from the United States are waning. US President Trump's quid-pro-quo stance on military aid has made clear that NATO countries must fulfil their commitments, including the long-standing obligation to spend at least 2% of GDP on defence. In Brussels, there is a long-overdue rethink: energy and defence security are climbing back to the top of the agenda. Europe must now take responsibility — not only to defend its nations and Union, but also to preserve peace and order on its own continent. In my view, this can only be achieved through deterrence. <em>Si vis pacem, para bellum.</em></p>
+  <p>But this imperative extends far beyond European borders. The international order itself is becoming increasingly unstable. Should Ukraine fall, it would set a precedent that encourages aggression elsewhere. Taiwan, already under pressure, could become the next flashpoint. In a world where technological supremacy determines economic and strategic power, the loss of Taiwan would not just be territorial — it would mark a tectonic shift in tech capabilities and hence in global influence. As shown in this article, the race for quantum computing and AI will determine who sets the rules in defence, trade, communication, and governance. That is why upholding the sovereignty of nations like Ukraine is not just a moral duty — it is a geopolitical necessity.</p>
+
+  <blockquote>
+    <p>The international community has to make it clear — once and for all — that borders agreed under international law have to be respected, no matter what.</p>
+  </blockquote>
+
+  <p>Moreover, we must recognise that the world has become more fragile over the past years — politically, economically, and environmentally. Technology now acts as both an accelerator and a disruptor. Rapid advances in AI, quantum computing, and biotech can provide power almost overnight. As such, the global balance of power is becoming more fluid than ever. But when power shifts continuously and unpredictably, it becomes harder to establish new equilibriums — and easier for chaos to emerge. That chaos is not abstract: history teaches us that social instability and economic asymmetries often lead to conflict. The roaring 1920s brought enormous economic and technological progress to Europe — but also amplified social inequalities and set the stage for the geopolitical breakdown that followed. We would do well to remember that.</p>
+  <p>In short, in a world where technology shifts faster than diplomacy or governance, the burden of maintaining peace will fall increasingly on the shoulders of responsible nations. We must be ready to carry it.</p>
+
+  <!-- CONCLUSIONS -->
+  <h2 id="conclusions">Conclusions</h2>
+  <p>Quantum computing is not just another tech wave — it is the tide that may redraw the contours of global power itself.</p>
+  <p>The actor — be it a state, a corporation, or a coalition — that first builds a scalable, operational quantum computer won't just achieve a leap in processing power; it will gain the strategic upper hand across finance, defence, science, and governance. Technological edge will translate directly into geopolitical dominance.</p>
+  <p>That is why the race for quantum supremacy is being fought on multiple fronts — from chip embargoes to rare earth mineral deals, from research alliances to export controls, and from using military power to intelligence interventions. It also explains why former President Trump placed quantum computing at the top of his strategic agenda: not just through bold statements and high-level appointments, but by redrawing international alliances around critical technology assets.</p>
+  <p>But this goes far beyond any one leader or administration. We are witnessing the emergence of a new global order — one no longer defined by borders, oil fields, or military bases, but by who controls the next era of computation.</p>
+  <p>The question is no longer <em>if</em> quantum computing will arrive. It is <em>when</em> — and more crucially, on whose terms. Will we harness this power to solve our shared global challenges? Or will we allow it to deepen divisions and fuel a new era of techno-political instability?</p>
+
+  <blockquote>
+    <p>The inflection point is approaching. The consequences will be profound. But the direction it takes is still — for now — in our hands.</p>
+  </blockquote>
+
+</article>
+
+<!-- ════════════════════════════════════════════════
+     TAGS
+════════════════════════════════════════════════ -->
+<div class="tags-strip">
+  <span class="tag">Geopolitics</span>
+  <span class="tag">Quantum Computing</span>
+  <span class="tag">Artificial Intelligence</span>
+  <span class="tag">Critical Resources</span>
+  <span class="tag">Economics</span>
+  <span class="tag">Technology Policy</span>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     REFERENCES
+════════════════════════════════════════════════ -->
+<section class="references" id="references">
+  <h2>References</h2>
+  <ol class="ref-list">
+    <li data-ref="1" id="ref1">Term coined by <a href="https://www.preskill.caltech.edu" target="_blank" rel="noopener">John Preskill</a> and popularised by Michio Kaku, dating back to the proposal of quantum computing by Yuri Manin and Richard Feynman.</li>
+    <li data-ref="2" id="ref2">Richard Feynman, "<a href="https://link.springer.com/article/10.1007/BF02650179" target="_blank" rel="noopener">Simulating Physics with Computers</a>", <em>International Journal of Theoretical Physics</em>, 1982, 21, 467–488.</li>
+    <li data-ref="3" id="ref3">Forbes, "<a href="https://www.forbes.com/councils/forbestechcouncil/2023/06/20/bridging-the-quantum-divide/" target="_blank" rel="noopener">Bridging The Quantum Divide</a>", June 2023.</li>
+    <li data-ref="4" id="ref4">Atlantic Council, "<a href="https://www.atlanticcouncil.org/in-depth-research-reports/books/how-prepared-are-conflicting-world-orders-for-the-next-wave-of-technological-innovation/" target="_blank" rel="noopener">How prepared are conflicting world orders for the next wave of technological innovation?</a>", September 2023.</li>
+    <li data-ref="5" id="ref5">Instituto Español de Estudios Estratégicos, "<a href="https://www.defensa.gob.es/documents/2073105/2278118/la_inteligencia_artificial_y_la_guerra_de_ucrania_2024_dieeea81_eng.pdf" target="_blank" rel="noopener">Artificial Intelligence &amp; the War in Ukraine</a>", December 2024.</li>
+    <li data-ref="6" id="ref6">Financial Times, "<a href="https://www.ft.com/content/984205be-ab3a-4bd1-8a8d-9b00bf8ad8b0" target="_blank" rel="noopener">D-Wave claims to have reached 'quantum supremacy' after costly 25-year pursuit</a>", March 2025.</li>
+    <li data-ref="7" id="ref7">Council on Foreign Relations, "<a href="https://www.cfr.org/blog/war-over-worlds-most-critical-technology-conversation-chris-miller" target="_blank" rel="noopener">The War Over the World's Most Critical Technology</a>", January 2023.</li>
+    <li data-ref="8" id="ref8">RAND Corporation, "<a href="https://www.rand.org/pubs/research_reports/RRA869-1.html" target="_blank" rel="noopener">An Assessment of the U.S. and Chinese Industrial Bases in Quantum Technology</a>", February 2022.</li>
+    <li data-ref="9" id="ref9">The Economist, "<a href="https://www.economist.com/leaders/2025/01/23/chinese-ai-is-catching-up-posing-a-dilemma-for-donald-trump" target="_blank" rel="noopener">Chinese AI is catching up, posing a dilemma for Donald Trump</a>", January 2025.</li>
+    <li data-ref="10" id="ref10">DARPA, "<a href="https://www.darpa.mil/news/2025/quantum-computing-approaches" target="_blank" rel="noopener">DARPA selects two discrete utility-scale quantum computing approaches for evaluation</a>", February 2025.</li>
+    <li data-ref="11" id="ref11">The Intercept, "<a href="https://theintercept.com/2023/04/05/intercepted-china-us-hegemony/" target="_blank" rel="noopener">China's mounting Challenge to US Hegemony</a>", April 2023.</li>
+    <li data-ref="12" id="ref12">CSIS, "<a href="https://www.csis.org/analysis/understanding-us-allies-current-legal-authority-implement-ai-and-semiconductor-export" target="_blank" rel="noopener">Understanding U.S. Allies' Current Legal Authority to Implement AI and Semiconductor Export Controls</a>", March 2025.</li>
+    <li data-ref="13" id="ref13">Arab News, "<a href="https://www.arabnews.com/node/2588450" target="_blank" rel="noopener">The Gulf's advantage in the next AI chapter</a>", January 2025.</li>
+    <li data-ref="14" id="ref14">The Diplomat, "<a href="https://thediplomat.com/2024/09/silicon-shield-2-0-a-taiwan-perspective/" target="_blank" rel="noopener">Silicon Shield 2.0: A Taiwan Perspective</a>", September 2024.</li>
+    <li data-ref="15" id="ref15">The Guardian, "China military drills targeting Taiwan put region's security at risk, says US", April 2025.</li>
+    <li data-ref="16" id="ref16">Reuters, "<a href="https://www.reuters.com/world/german-ships-that-passed-through-taiwan-strait-were-warned-off-officials-say-2024-10-02/" target="_blank" rel="noopener">German ships that passed through Taiwan Strait were warned off, officials say</a>", October 2024.</li>
+    <li data-ref="17" id="ref17">Reuters, "<a href="https://www.reuters.com/technology/taiwan-says-chinas-smic-suspected-of-illegally-luring-tech-workers-2025-03-28/" target="_blank" rel="noopener">Taiwan says China's SMIC suspected of illegally luring tech workers</a>", March 2025; The Guardian, "<a href="https://www.theguardian.com/world/2025/mar/27/taiwan-jails-four-soldiers-including-three-who-worked-in-presidential-office-for-spying-for-china" target="_blank" rel="noopener">Taiwan jails four soldiers for spying for China</a>", March 2025.</li>
+    <li data-ref="18" id="ref18">U.S. Department of Defense, "<a href="https://www.defense.gov/News/News-Stories/Article/Article/3700059/dod-looks-to-establish-mine-to-magnet-supply-chain-for-rare-earth-materials/" target="_blank" rel="noopener">DOD Looks to Establish 'Mine-to-Magnet' Supply Chain for Rare Earth Materials</a>", March 2024.</li>
+    <li data-ref="19" id="ref19">Reuters, "<a href="https://www.reuters.com/markets/commodities/china-bans-exports-gallium-germanium-antimony-us-2024-12-03/" target="_blank" rel="noopener">China Bans Export of Critical Minerals to US as Trade Tensions Escalate</a>", December 2024.</li>
+    <li data-ref="20" id="ref20">Reuters, "<a href="https://www.reuters.com/world/china/chinas-curbs-exports-strategic-minerals-2025-02-04/" target="_blank" rel="noopener">China's curbs on exports of strategic minerals</a>", April 2025.</li>
+    <li data-ref="21" id="ref21">CSIS, "<a href="https://www.csis.org/analysis/china-imposes-its-most-stringent-critical-minerals-export-restrictions-yet-amidst" target="_blank" rel="noopener">China Imposes Its Most Stringent Critical Minerals Export Restrictions Yet</a>", December 2023.</li>
+    <li data-ref="22" id="ref22">RAND Corporation, "<a href="https://www.rand.org/pubs/articles/2023/the-time-to-prevent-shortfalls-in-critical-materials.html" target="_blank" rel="noopener">The Time to Prevent Shortfalls in Critical Materials Is Now</a>", March 2023.</li>
+    <li data-ref="23" id="ref23">European Commission, "<a href="https://single-market-economy.ec.europa.eu/sectors/raw-materials/areas-specific-interest/rare-earth-elements-permanent-magnets-and-motors_en" target="_blank" rel="noopener">Rare earth elements, permanent magnets, and motors</a>", retrieved April 2025.</li>
+    <li data-ref="24" id="ref24">Texas Mineral Resources Corporation, "<a href="https://tmrcorp.com/projects/rare_earths/" target="_blank" rel="noopener">TMRC's Flagship Round Top Project</a>", retrieved April 2025.</li>
+    <li data-ref="25" id="ref25">Robert Muggah &amp; Rafal Rohozinski, "<a href="https://www.cirsd.org/en/horizons/horizons-winter-2025-issue-no-29/the-mineral-wars" target="_blank" rel="noopener">The Mineral Wars</a>", CIRSD, retrieved April 2025.</li>
+    <li data-ref="26" id="ref26">Reuters, "<a href="https://www.reuters.com/world/russia-us-start-talks-rare-earth-metals-projects-russia-putin-envoy-says-2025-03-30/" target="_blank" rel="noopener">Russia, US discussing rare earth metals projects, Putin envoy says</a>", March 2025.</li>
+    <li data-ref="27" id="ref27">Bloomberg, "<a href="https://www.bloomberg.com/opinion/articles/2025-02-19/trump-s-insistence-ukraine-has-rare-earth-elements-is-wrong" target="_blank" rel="noopener">Rare Earth in Ukraine? No, Only Scorched Earth</a>", February 2025.</li>
+    <li data-ref="28" id="ref28">Bellingcat, "<a href="https://www.bellingcat.com/resources/2025/01/10/satellite-imagery-bands-guide/" target="_blank" rel="noopener">Seeing More With Satellite Imagery Using Band Combinations, Ratios and Indices</a>", January 2025.</li>
+    <li data-ref="29" id="ref29">World Economic Forum, "<a href="https://www3.weforum.org/docs/WEF_Quantum_Computing_2022.pdf" target="_blank" rel="noopener">Quantum Computing Governance Principles</a>", January 2022.</li>
+    <li data-ref="30" id="ref30">NIST, "<a href="https://csrc.nist.gov/projects/post-quantum-cryptography" target="_blank" rel="noopener">Post Quantum Cryptography</a>", retrieved April 2025.</li>
+    <li data-ref="31" id="ref31">Carnegie Endowment for International Peace, "<a href="https://www.cigionline.org/articles/crypto-agility-must-have-data-encryption-standards/" target="_blank" rel="noopener">Crypto Agility is a Must Have for Data Encryption Standards</a>", May 2019.</li>
+    <li data-ref="32" id="ref32">NATO StratComm, "<a href="https://www.nato.int/cps/en/natohq/news_221601.htm" target="_blank" rel="noopener">NATO releases first ever quantum strategy</a>", January 2024.</li>
+  </ol>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     AUTHOR BIO
+════════════════════════════════════════════════ -->
+<div class="author-bio">
+  <div class="author-bio-inner">
+    <div class="author-bio-avatar">
+      <img src="https://miro.medium.com/v2/resize:fill:128:128/1*RifgHDgkaO_QDJmoHN9IbQ.jpeg" alt="Dr. Oliver Inderwildi" onerror="this.style.display='none'" />
+    </div>
+    <div class="author-bio-content">
+      <div class="author-bio-name">Dr. Oliver Inderwildi</div>
+      <p class="author-bio-text">Dr. Oliver Inderwildi is a techno-economic strategist with a keen interest in the geopolitical consequences of technological developments. He is Managing Director of CMPG and Senior Fellow at the University of Cambridge. His books are published by SpringerNature.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════ -->
+<footer>
+  <p>Originally published on <a href="https://medium.com/@oliverinderwildi/the-quantum-computing-revolution-geopolitics-economics-c2380e0167ee" target="_blank" rel="noopener">Medium — The Geopolitical Economist</a> · April 14, 2025</p>
+  <p style="margin-top:8px;">© 2025 Dr. Oliver Inderwildi · All rights reserved</p>
+</footer>
+
+</body>
+</html>
